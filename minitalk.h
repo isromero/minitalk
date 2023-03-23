@@ -3,30 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isromero <isromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 21:36:27 by marvin            #+#    #+#             */
-/*   Updated: 2023/02/14 21:36:27 by marvin           ###   ########.fr       */
+/*   Created: 2023/03/23 19:25:38 by isromero          #+#    #+#             */
+/*   Updated: 2023/03/23 19:25:39 by isromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 #define MINITALK_H
 
-#include "libft/libft.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include "libft/libft.h"
+#include "ft_printf/ft_printf.h"
 
-
-struct sig_data
+typedef struct sig_data
 {
     int i;
     int bit;
-};
+} t_sigdata;
 
 
 #endif

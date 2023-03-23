@@ -12,11 +12,11 @@
 
 #include "minitalk.h"
 
-
-struct sig_data data;
-
 void    handle_sig(int sig)
 {
+    t_sigdata data;
+    data.i = 0;
+    data.bit = 0;
     if (sig == SIGUSR1)
         data.i |= (0x01 << data.bit); //Desplazamos el bit 1 a la izquierda si es SIGUSR1
     data.bit++;
@@ -31,11 +31,12 @@ void    handle_sig(int sig)
 int main(int argc, char **argv) 
 {
     struct sigaction sa;
-    sa.sa_handler = &handle_sig;
     pid_t   pid;
+    
     (void)argv;
     pid = getpid();
     ft_printf("PID: %d\n", pid);
+    sa.sa_handler = &handle_sig;
     if (argc)
     {
         while(1)

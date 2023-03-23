@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isromero <isromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 15:52:55 by isromero          #+#    #+#             */
-/*   Updated: 2023/02/14 22:34:00 by marvin           ###   ########.fr       */
+/*   Created: 2023/03/23 19:24:58 by isromero          #+#    #+#             */
+/*   Updated: 2023/03/23 19:25:04 by isromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include "printf/ft_printf.h"
 
 void	send_message(pid_t pid, char i)
 {

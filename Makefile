@@ -3,46 +3,48 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: isromero <isromero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/14 21:52:57 by marvin            #+#    #+#              #
-#    Updated: 2023/02/14 21:52:57 by marvin           ###   ########.fr        #
+#    Created: 2023/03/23 19:25:57 by isromero          #+#    #+#              #
+#    Updated: 2023/03/23 19:39:41 by isromero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CLIENT = client
-SERVER = server
-FLAGS = -Wall -Wextra -Werror
-RM = rm -rf
+NAME		=	minitalk
+CC			=	gcc
+SRCS		=	server.c client.c
+SRCS_BONUS	=	bonus/server_bonus.c bonus/client_bonus.c
 
-all: $(CLIENT) $(SERVER)
-	
-$(CLIENT):
-	cd libft && make all
-	cd printf && make all
-	cc $(FLAGS) libft/libft.a printf/libftprintf.a client.c -o $(CLIENT)
-$(SERVER):
-	cd libft && make all
-	cd printf && make all
-	cc $(FLAGS) libft/libft.a printf/libftprintf.a server.c -o $(SERVER)
+LIBFT		=	libft/libft.a
+PRINTF		=	ft_printf/libftprintf.a
+
+CFLAGS		=	-Wall -Wextra -Werror
+RM			=	rm -f
+OBJS		=	$(SRCS:%.c=%.o)
+OBJS_BONUS	=	$(SRCS_BONUS:%.c=%.o)
+
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			@make -C libft >/dev/null 2>&1
+			@make -C ft_printf
+			@make clean -C libft >/dev/null 2>&1
+			@make clean -C ft_printf
+			$(CC) $(OBJS) $(LIBFT) $(PRINTF) $(CFLAGS) -o $(NAME) >/dev/null 2>&1
+
+%o:			%.c
+			$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	cd libft && make clean
-	cd printf && make clean
-	cc $(FLAGS) libft/libft.a printf/libftprintf.a client.c -o $(CLIENT)
-	cc $(FLAGS) libft/libft.a printf/libftprintf.a server.c -o $(SERVER)
-	
-fclean:
-	cd libft && make fclean
-	cd printf && make fclean
-	$(RM) client
-	$(RM) server
+			@$(RM) $(OBJS) >/dev/null 2>&1
 
+fclean:		clean
+			@$(RM) $(NAME) >/dev/null 2>&1
+			@$(RM) *.out >/dev/null 2>&1
+			@make fclean -C libft/ >/dev/null 2>&1
+			@make fclean -C ft_printf/ >/dev/null 2>&1
 
-re:
-	cd libft && make re
-	cd printf && make re
-	cc $(FLAGS) libft/libft.a printf/libftprintf.a client.c -o $(CLIENT)
-	cc $(FLAGS) libft/libft.a printf/libftprintf.a server.c -o $(SERVER)
+re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re

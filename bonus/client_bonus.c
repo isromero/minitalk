@@ -24,12 +24,14 @@
 
 #include "minitalk_bonus.h"
 
-struct sig_data data;
-
 void    handle_confirmation(int sig, siginfo_t *siginfo, void *unused)
 {
-    if (sig == SIGUSR2)
-		printf("Confirmado\n");
+    t_sigdata data;
+    if (sig == SIGUSR2 && !data.boolean)
+    {
+		ft_printf("Confirmado\n");
+        data.boolean = true;
+    }
 }
 
 void	send_message(pid_t pid, char i)
@@ -69,7 +71,7 @@ int	main(int argc, char **argv)
 		send_message(pid, '\n');
 	}
 	else
-		printf("error\n");
+		ft_printf("error\n");
 
 	return (0);
 }
