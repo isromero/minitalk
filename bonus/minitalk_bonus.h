@@ -21,8 +21,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include "../libft/libft.h"
-#include "ft_printf/ft_printf.h"
-
+#include "../ft_printf/ft_printf.h"
 
 typedef struct sig_data
 {
@@ -30,6 +29,5 @@ typedef struct sig_data
     int bit;
     bool boolean;
 } t_sigdata;
-
 
 #endif
