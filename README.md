@@ -1,11 +1,6 @@
 # minitalk
 The purpose of this project is to code a small data exchange program using UNIX signals. It is an introductory project for the bigger UNIX projects that will appear later on in the cursus.
 
-## Usage
-
-- Inside of the folder you have to do make to compile everything
-  ![make](./imgs/make.PNG)
-
 #### The goal of this project is:
   - To create two executables named: server and client.
   - The client will send information (a string) to the server, using UNIX signals.
@@ -33,6 +28,50 @@ The purpose of this project is to code a small data exchange program using UNIX 
       - sleep
       - asleep
       - leave
+
+## Usage
+
+- Inside of the folder you have to do 'make' to compile everything:
+
+  ![make](./imgs/make.PNG)
+
+- Then you execute './server':
+
+  ![execute server](./imgs/exec_server.PNG)
+
+- With the pid of the server you execute './client [PID] [MESSAGE]':
+
+  ![execute client](./imgs/exec_client.PNG)
+
+- Server receives the message:
+
+  ![server receives](./imgs/receive_server.PNG)
+
+## Usage bonus
+
+- Use cd to the folder '/bonus': 
+
+  ![cd bonus](./imgs/cd_bonus.PNG)
+
+- Inside of the folder you have to do 'make bonus' to compile everything:
+
+  ![make bonus](./imgs/make_bonus.PNG)
+
+- Then you execute './server_bonus':
+
+  ![execute server bonus](./imgs/exec_server_bonus.PNG)
+
+- With the pid of the server you execute './client_bonus [PID] [MESSAGE]':
+
+  ![execute client bonus](./imgs/exec_client_bonus.PNG)
+
+- Server receives the message:
+
+  ![server receives bonus](./imgs/receive_server_bonus.PNG)
+
+- Client receives a confirmation:
+
+  ![client receives bonus](./imgs/receive_client_bonus.PNG)
 
 ## Signals? What is that?
 ***Signals are a form of communication between processes*** used by Unix-like systems
