@@ -6,13 +6,13 @@
 #    By: isromero <isromero@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/23 19:25:57 by isromero          #+#    #+#              #
-#    Updated: 2023/07/21 09:28:18 by isromero         ###   ########.fr        #
+#    Updated: 2023/07/21 10:44:47 by isromero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = all
 CC = gcc
-CFLAGS = -Wall -Wextra #-Werror
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT_DIR = libft
 FT_PRINTF_DIR = ft_printf
@@ -33,8 +33,6 @@ OBJ_SERVER_BONUS = $(addprefix $(OBJ_DIR_BONUS)/,$(notdir $(SRC_SERVER_BONUS:.c=
 
 PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 LIBFT = $(LIBFT_DIR)/libft.a
-
-.PHONY: all clean fclean re
 
 all: $(OBJ_DIR) client server
 
@@ -67,8 +65,6 @@ $(OBJ_DIR_BONUS):
 	mkdir -p $(OBJ_DIR_BONUS)
 
 clean:
-	@make clean -C $(FT_PRINTF_DIR) >/dev/null 2>&1
-	@make clean -C $(LIBFT_DIR) >/dev/null 2>&1
 	$(RM) -r $(OBJ_DIR) $(OBJ_DIR_BONUS)
 	@tput setaf 3; echo "Object files cleaned."; tput sgr0
 
@@ -79,3 +75,5 @@ fclean: clean
 	@tput setaf 3; echo "Executable files cleaned."; tput sgr0
 
 re: fclean all
+
+.PHONY: all clean fclean re
