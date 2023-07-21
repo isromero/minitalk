@@ -6,7 +6,7 @@
 /*   By: isromero <isromero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:24:58 by isromero          #+#    #+#             */
-/*   Updated: 2023/07/21 08:57:30 by isromero         ###   ########.fr       */
+/*   Updated: 2023/07/21 09:44:26 by isromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	main(int argc, char **argv)
 	pid_t	pid;
 	int		byte;
 
-	pid = atoi(argv[1]);
 	byte = 0;
 	if (argc == 3)
 	{
+		pid = atoi(argv[1]);
 		while(argv[2][byte] != '\0')
 		{
 			send_message(pid, argv[2][byte]);
@@ -45,6 +45,10 @@ int	main(int argc, char **argv)
 		send_message(pid, '\n');
 	}
 	else
-		ft_printf("error\n");
+	{
+		ft_printf(RED "Error: wrong format.\n" RESET);
+        ft_printf(YELLOW "Usage: %s <PID> <MESSAGE>\n" RESET, argv[0]);
+		return (1);
+	}
 	return (0);
 }

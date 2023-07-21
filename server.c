@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 
 	(void)argv;
 	pid = getpid();
-	ft_printf("PID: %d\n", pid);
+	ft_printf(BLUE "PID ==> "RESET "%d\n", pid);
 	sa.sa_handler = &handle_sig;
 	sa.sa_flags = 0; //SA_RESTART es desactivado por defecto
 	if (argc)

@@ -13,21 +13,11 @@
 #include "minitalk_bonus.h"
 #include <stdbool.h>
 
-t_sigdata data; //La razón es que cada vez que se reciba una señal, se crearía una nueva instancia de la variable data, y se perdería la información almacenada en la llamada anterior de la función.
-
-void    init(t_sigdata data)
-{
-    data.i = 0;
-    data.bit = 0;
-}
-
 void    handle_sig(int sig, siginfo_t *siginfo, void *unused)
 {
-    pid_t   pid;
-    struct sigaction sa;
-    
-
-    pid = getpid();
+    (void)unused;
+    (void)siginfo;
+    static t_sigdata data;
     if (sig == SIGUSR1)
         data.i |= (0x01 << data.bit); //Desplazamos el bit 1 a la izquierda si es SIGUSR1
     data.bit++;
@@ -46,16 +36,18 @@ int main(int argc, char **argv)
     pid_t   pid;
 
     (void)argv;
-    pid = getpid();
-    ft_printf("PID: %d\n", pid);
-    sa.sa_sigaction = &handle_sig; //para conseguir mas informacion de la señal
-    sigemptyset(&sa.sa_mask);
-    sa.sa_flags = SA_SIGINFO;
-    while(1)
+    if(argc)
     {
-        sigaction(SIGUSR1, &sa, NULL);
-        sigaction(SIGUSR2, &sa, NULL);
+        pid = getpid();
+        ft_printf(BLUE "PID ==> "RESET "%d\n", pid);
+        sa.sa_sigaction = &handle_sig; //para conseguir mas informacion de la señal
+        sigemptyset(&sa.sa_mask);
+        sa.sa_flags = SA_SIGINFO;
+        while(1)
+        {
+            sigaction(SIGUSR1, &sa, NULL);
+            sigaction(SIGUSR2, &sa, NULL);
+        }
     }
- 
     return (0);
 }

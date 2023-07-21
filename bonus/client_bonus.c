@@ -3,22 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isromero <isromero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 23:39:38 by marvin            #+#    #+#             */
-/*   Updated: 2023/02/14 23:39:38 by marvin           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 15:52:55 by isromero          #+#    #+#             */
-/*   Updated: 2023/02/14 22:34:00 by marvin           ###   ########.fr       */
+/*   Created: 2023/07/21 09:21:22 by isromero          #+#    #+#             */
+/*   Updated: 2023/07/21 09:21:22 by isromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +14,12 @@
 
 void    handle_confirmation(int sig, siginfo_t *siginfo, void *unused)
 {
-    t_sigdata data;
+	(void)siginfo;
+	(void)unused;
+    static t_sigdata data;
     if (sig == SIGUSR2 && !data.boolean)
     {
-		ft_printf("Confirmado\n");
+		ft_printf(GREEN "Message received\n" RESET);
         data.boolean = true;
     }
 }
@@ -54,14 +44,14 @@ int	main(int argc, char **argv)
 {
 	pid_t	pid;
 	int		byte;
-	
 	struct sigaction sa;
-    sa.sa_sigaction = &handle_confirmation;
-	sa.sa_flags = SA_SIGINFO;
-	pid = atoi(argv[1]);
+
 	byte = 0;
 	if (argc == 3)
 	{
+		sa.sa_sigaction = &handle_confirmation;
+		sa.sa_flags = SA_SIGINFO;
+		pid = atoi(argv[1]);
 		while(argv[2][byte] != '\0')
 		{
 			sigaction(SIGUSR2, &sa, NULL);
@@ -71,7 +61,9 @@ int	main(int argc, char **argv)
 		send_message(pid, '\n');
 	}
 	else
-		ft_printf("error\n");
-
+	{
+		ft_printf(RED "Error: wrong format.\n" RESET);
+        ft_printf(YELLOW "Usage: %s <PID> <MESSAGE>\n" RESET, argv[0]);
+	}
 	return (0);
 }

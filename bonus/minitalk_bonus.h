@@ -23,6 +23,12 @@
 #include "../libft/libft.h"
 #include "../ft_printf/ft_printf.h"
 
+#define RED "\e[0;31m"
+#define YELLOW "\033[1;93m"
+#define GREEN "\e[0;32m"
+#define BLUE "\e[0;34m"
+#define RESET "\033[0m"
+
 typedef struct sig_data
 {
     int i;

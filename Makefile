@@ -6,13 +6,13 @@
 #    By: isromero <isromero@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/23 19:25:57 by isromero          #+#    #+#              #
-#    Updated: 2023/07/20 15:34:00 by isromero         ###   ########.fr        #
+#    Updated: 2023/07/21 09:28:18 by isromero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = all
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra #-Werror
 
 LIBFT_DIR = libft
 FT_PRINTF_DIR = ft_printf
