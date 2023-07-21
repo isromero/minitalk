@@ -17,7 +17,7 @@ void	handle_sig(int sig)
 	static t_sigdata	data;
 
 	if (sig == SIGUSR1)
-		data.i |= (0x01 << data.bit); //Desplazamos el bit 1 a la izquierda si es SIGUSR1
+		data.i |= (0x01 << data.bit);
 	data.bit++;
 	if (data.bit == 8)
 	{
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	pid = getpid();
 	ft_printf(BLUE "PID ==> "RESET "%d\n", pid);
 	sa.sa_handler = &handle_sig;
-	sa.sa_flags = 0; //SA_RESTART es desactivado por defecto
+	sa.sa_flags = 0;
 	if (argc)
 	{
 		while (1)
