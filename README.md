@@ -138,8 +138,6 @@ Result:
   // x = 13
   ```
 
-
-
 #### ^= (bitwise exclusive OR assignment)
 
 The '^=' operator combines the bitwise exclusive OR (XOR) operation with the assignment. It takes the value of the variable on the left, performs a bitwise XOR operation on the value of the variable on the right, and then assigns the result back to the variable on the left.
@@ -187,5 +185,39 @@ Result:
   // The bits are shifted two positions to the right, and zeros are filled in from the left
   // Therefore, x is updated to 00000100 in binary, which is 4 in decimal.
   // x = 4
-
   ```
+
+## Pseudocode of my code to start coding
+With the above concepts you may be a bit lost, so here is something that may help you:
+
+In the minitalk code, bitwise operators and signal handlers (`sigaction`) are used to implement a simple communication between two processes: a client and a server. The communication between the client and server is achieved by sending ASCII character messages from one process to the other using `SIGUSR1` and `SIGUSR2` signals.
+
+The client sends text messages to the server, and the server receives and displays these messages in the console. Here's the explanation of how bitwise operators and signals are used in the minitalk code:
+
+**Client (`client.c`):**
+
+- The `send_message` function is responsible for sending a character to the server via signals. This function takes the server's PID and the character to be sent as arguments.
+
+- Inside the `send_message` function, a loop is used to send the character bit by bit. Each bit of the character is traversed using a mask and the bitwise AND (`&`) operation to check if the bit is 1 or 0.
+
+- If the bit is 1 (`(i & (0x01 << bit)) != 0`), the `SIGUSR1` signal is sent to the server using the `kill` function.
+
+- If the bit is 0 (`(i & (0x01 << bit)) == 0`), the `SIGUSR2` signal is sent to the server using the `kill` function.
+
+- After sending each bit, a small pause is introduced using `usleep(500)` to ensure that the server has time to process the signal before sending the next bit.
+
+- The client also sends a newline character (`'\n'`) at the end of the message to indicate to the server that it has finished sending the message.
+
+**Server (`server.c`):**
+
+- The `handle_sig` function is the signal handler that processes the `SIGUSR1` and `SIGUSR2` signals sent by the client.
+
+- When a `SIGUSR1` signal is received, the handler updates the corresponding bit in the `data.i` variable using the bitwise OR (`|`) operation. This is done by shifting a 1 at the position of the received bit and then combining it with the current value of `data.i`.
+
+- If a `SIGUSR2` signal is received, no action is needed because the bit is already set to 0 by default.
+
+- When all 8 bits of a complete character have been received, the handler prints the corresponding character to the console using `putchar`, and then resets the `data.i` and `data.bit` variables to process the next character.
+
+- The server also uses the `pause()` function to passively wait for signals. This prevents the server from consuming unnecessary CPU resources while waiting for signals.
+
+In summary, the client sends text messages to the server through signals, sending a character bit by bit. The server receives and assembles complete characters from the received bits and displays the complete messages in the console. Bitwise operators (`&` and `|`) are used to handle the character bits, and the `SIGUSR1` and `SIGUSR2` signals are used for communication between the client and server.
