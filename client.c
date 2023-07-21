@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isromero <isromero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isromero <isromero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:24:58 by isromero          #+#    #+#             */
-/*   Updated: 2023/03/23 19:25:04 by isromero         ###   ########.fr       */
+/*   Updated: 2023/07/21 08:57:30 by isromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	main(int argc, char **argv)
 	byte = 0;
 	if (argc == 3)
 	{
-		
 		while(argv[2][byte] != '\0')
 		{
 			send_message(pid, argv[2][byte]);
@@ -47,6 +46,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		ft_printf("error\n");
-
 	return (0);
 }

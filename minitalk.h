@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isromero <isromero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isromero <isromero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:25:38 by isromero          #+#    #+#             */
-/*   Updated: 2023/03/23 19:25:39 by isromero         ###   ########.fr       */
+/*   Updated: 2023/07/21 09:17:21 by isromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ typedef struct sig_data
     int i;
     int bit;
 } t_sigdata;
-
 
 #endif
