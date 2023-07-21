@@ -63,7 +63,7 @@ This applies to bitwise operators as well, which means that even though they ope
 | >> | right shift |
 | ~ | bitwise NOT (one's complement) (unary) |
 
-#### Logical VS Bitwise
+### Logical VS Bitwise
 
 | Bitwise | Logical |
 | :---: | :---: |
@@ -72,9 +72,51 @@ This applies to bitwise operators as well, which means that even though they ope
 | a ^ b | a != b |
 | ~a | !a |
 
-#### Shift operators (THIS IS WHAT YOU NEED 100%)
+### Shift operators (Read and practice until you are comfortable with it)
 
+#### Right shift (>>):
+The right shift operator is denoted by '>>'. It takes two operands: the bit pattern (an integer) and the number of positions you want to shift the bits to the right. When you perform a right shift, you are effectively dividing the number by 2 to the power of the specified shift count and discarding the remainder. With right shift you put zeros on left.
+Example:
+  ```
+  int i = 14; // Bit pattern 00001110
+  int j = i >> 1; // Here, we shift the bit pattern by 1 position to the right, resulting in 00000111 = 7, which is 14 divided by 2.
+  ```
+The right shift operation is equivalent to performing integer division by 2 to the power of the specified shift count. So, for each right shift by n positions, the number is effectively divided by 2^n.
 
-#### Bitwise assignment operators
+#### Left shift (<<)
+The left shift operator is denoted by '<<'. Like the right shift, it also takes two operands: the bit pattern (an integer) and the number of positions you want to shift the bits to the left. When you perform a left shift, you are effectively multiplying the number by 2 to the power of the specified shift count. With left shift you put zeros on right.
+Example:
+  ```
+  int i = 14; // Bit pattern 00001110
+  int j = i << 1; // Here, we shift the bit pattern by 1 position to the left, resulting in 00011100 = 28, which is 14 multiplied by 2.  
+  ```
 
+The left shift operation is equivalent to performing multiplication by 2 to the power of the specified shift count. So, for each left shift by n positions, the number is effectively multiplied by 2^n.
+
+### Bitwise assignment operators (Read and practice until you are comfortable with it)
+
+| Symbol | Operator |
+| :---: | :---: |
+| &= | bitwise AND assignment |
+| \|= | bitwise inclusive OR assignment |
+| ^= | bitwise exclusive OR assignment |
+| <<= | left shift assignment |
+| >>= | right shift assignment |
+
+#### &= (bitwise AND assignment)
+The '&=' operator combines the bitwise AND operation with the estimate. That is, it takes the value of the variable on the left, performs a bitwise AND operation on the value of the variable on the right, and then assigns the result back to the variable on the left.
+Example:
+  ```
+  int x = 10; // In binary: 00001010
+  int y = 6;  // In binary: 00000110
+  x &= y;
+  ```
+Result:
+  ```
+  // Binary AND operation between 00001010 (x) and 00000110 (y)
+  // Compares each bit, if both bits are 1, the result bit is 1, otherwise, it's 0
+  // Only the second bit from the right has a common 1 between x and y
+  // Therefore, x is updated to 00000010 in binary, which is 2 in decimal.
+  // x = 2
+  ```
 
