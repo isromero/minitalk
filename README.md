@@ -41,10 +41,10 @@ between processes using the minitalk communication protocol.
 ### A visual representation made by [42-cursus.gitbook-guide](https://42-cursus.gitbook.io/guide/rank-02/minitalk/understand-minitalk) :
   ![client and server diagram](https://1295869145-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fz2zo8aAL0o31034sj7J7%2Fuploads%2F5eY61q1QT9MHUx2Zxf7g%2Fminitalk_scheme.png?alt=media&token=22a960bd-d30e-4e73-a4e7-a683b9c4d931)
 
-Looking at this visual representation maybe you are asking: how can I transform my chars into bits for display the correct message? That's where the concept of bit translation✨ comes in.
+Looking at this visual representation maybe you are asking: how can I transform my chars into bits for display the correct message? That's where the concept of bit shifting✨ comes in.
 
 ## Bitwise operations in C
-For understanding correctly the bit translation you have to know every operation possible and their operator for the bit translation:
+For understanding correctly the bit shifting you have to know every operation possible(you will not use everything, but it is fine to know about all) and their operator:
 
 In the C programming language, operations can be performed on a bit level using bitwise operators.
 
