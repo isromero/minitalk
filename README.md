@@ -107,9 +107,9 @@ The left shift operation is equivalent to performing multiplication by 2 to the 
 The '&=' operator combines the bitwise AND operation with the estimate. That is, it takes the value of the variable on the left, performs a bitwise AND operation on the value of the variable on the right, and then assigns the result back to the variable on the left.
 Example:
   ```
-  int x = 10; // In binary: 00001010
-  int y = 6;  // In binary: 00000110
-  x &= y;
+  int x = 10; // Binary representation: 00001010
+  int y = 6;  // Binary representation: 00000110
+  x &= y;     // Performs x = x & y
   ```
 Result:
   ```
@@ -120,3 +120,72 @@ Result:
   // x = 2
   ```
 
+#### |= (bitwise OR assignment)
+The bitwise inclusive OR assignment operator, |=, performs a bitwise OR operation between the left and right operands and assigns the result back to the left operand.
+Example:
+  ```  
+  int x = 10; // Binary representation: 00001010
+  int y = 6;  // Binary representation: 00000110
+
+  x |= y;     // Performs x = x | y
+  ```
+Result:
+  ```
+  // Binary OR operation between 00000101 (x) and 00001001 (y)
+  // Compares each bit, if at least one of the bits is 1, the result bit is 1, otherwise, it's 0
+  // The first, third, and fourth bits have at least one 1 between x and y
+  // Therefore, x is updated to 00001101 in binary, which is 13 in decimal.
+  // x = 13
+  ```
+
+
+
+#### ^= (bitwise exclusive OR assignment)
+
+The '^=' operator combines the bitwise exclusive OR (XOR) operation with the assignment. It takes the value of the variable on the left, performs a bitwise XOR operation on the value of the variable on the right, and then assigns the result back to the variable on the left.
+Example:
+  ```
+  int x = 6; // Binary representation: 00000110
+  int y = 3; // Binary representation: 00000011
+  x ^= y;    // Performs x = x ^ y
+  ```
+Result:
+  ```
+  // Binary XOR operation between 00000110 (x) and 00000011 (y)
+  // Compares each bit, if both bits are different (one 0 and one 1), the result bit is 1, otherwise, it's 0
+  // The first and second bits have different values between x and y
+  // Therefore, x is updated to 00000101 in binary, which is 5 in decimal.
+  // x = 5
+  ```
+
+#### <<= (left shift assignment)
+The '<<=' operator combines the left shift operation with the assignment. It takes the value of the variable on the left, shifts its bits to the left according to the value of the variable on the right (the number of positions), and then assigns the result back to the variable on the left.
+
+Example:
+  ```
+  int x = 5; // Binary representation: 00000101
+  x <<= 2;   // Performs x = x << 2
+  ```
+Result:
+  ```
+  // Left shift operation on 00000101 (x) by 2 positions
+  // The bits are shifted two positions to the left, and zeros are filled in from the right
+  // Therefore, x is updated to 00010100 in binary, which is 20 in decimal.
+  // x = 20
+  ```
+
+#### >>= (right shift assignment)
+The '>>=' operator combines the right shift operation with the assignment. It takes the value of the variable on the left, shifts its bits to the right according to the value of the variable on the right (the number of positions), and then assigns the result back to the variable on the left.
+Example:
+  ```
+  int x = 16; // Binary representation: 00010000
+  x >>= 2;    // Performs x = x >> 2
+  ```
+Result:
+  ```
+  // Right shift operation on 00010000 (x) by 2 positions
+  // The bits are shifted two positions to the right, and zeros are filled in from the left
+  // Therefore, x is updated to 00000100 in binary, which is 4 in decimal.
+  // x = 4
+
+  ```
