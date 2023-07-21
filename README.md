@@ -1,6 +1,11 @@
 # minitalk
 The purpose of this project is to code a small data exchange program using UNIX signals. It is an introductory project for the bigger UNIX projects that will appear later on in the cursus.
 
+## Usage
+
+- Inside of the folder you have to do make to compile everything
+  ![make](./imgs/make.PNG)
+
 #### The goal of this project is:
   - To create two executables named: server and client.
   - The client will send information (a string) to the server, using UNIX signals.
