@@ -27,23 +27,18 @@ void	handle_sig(int sig)
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	struct sigaction	sa;
 	pid_t				pid;
 
-	(void)argv;
 	pid = getpid();
 	ft_printf(BLUE "PID ==> "RESET "%d\n", pid);
 	sa.sa_handler = &handle_sig;
 	sa.sa_flags = 0;
-	if (argc)
-	{
-		while (1)
-		{
-			sigaction(SIGUSR1, &sa, NULL);
-			sigaction(SIGUSR2, &sa, NULL);
-		}
-	}
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	while (1)
+		pause ();
 	return (0);
 }

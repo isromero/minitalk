@@ -6,7 +6,7 @@
 /*   By: isromero <isromero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:24:58 by isromero          #+#    #+#             */
-/*   Updated: 2023/07/21 11:46:09 by isromero         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:30:27 by isromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	send_message(pid_t pid, char i)
 			kill(pid, SIGUSR1);
 		if ((i & (0x01 << bit)) == 0)
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(500);
 		bit++;
 	}
 }

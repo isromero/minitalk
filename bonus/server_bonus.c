@@ -30,24 +30,19 @@ void	handle_sig(int sig, siginfo_t *siginfo, void *unused)
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	struct sigaction	sa;
 	pid_t				pid;
 
-	(void)argv;
-	if (argc)
-	{
-		pid = getpid();
-		ft_printf(BLUE "PID ==> "RESET "%d\n", pid);
-		sa.sa_sigaction = &handle_sig;
-		sigemptyset(&sa.sa_mask);
-		sa.sa_flags = SA_SIGINFO;
-		while (1)
-		{
-			sigaction(SIGUSR1, &sa, NULL);
-			sigaction(SIGUSR2, &sa, NULL);
-		}
-	}
+	pid = getpid();
+	ft_printf(BLUE "PID ==> "RESET "%d\n", pid);
+	sa.sa_sigaction = &handle_sig;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	while (1)
+		pause ();
 	return (0);
 }
