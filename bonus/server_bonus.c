@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: isromero <isromero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 23:39:23 by marvin            #+#    #+#             */
-/*   Updated: 2023/02/14 23:39:23 by marvin           ###   ########.fr       */
+/*   Created: 2023/07/21 10:46:29 by isromero          #+#    #+#             */
+/*   Updated: 2023/07/21 10:46:29 by isromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
-#include <stdbool.h>
 
 void    handle_sig(int sig, siginfo_t *siginfo, void *unused)
 {
